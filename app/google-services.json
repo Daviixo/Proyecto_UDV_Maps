@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "962578571664",
+    "project_id": "fir-auth-5fbb8",
+    "storage_bucket": "fir-auth-5fbb8.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:962578571664:android:a5324191b0a4f5cf2f9315",
+        "android_client_info": {
+          "package_name": "com.daviixo.proyecto_udv_maps"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "962578571664-f382rrde5h738mrtm8qauacguh8pgp36.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.daviixo.proyecto_udv_maps",
+            "certificate_hash": "2578126b490528c3e16721a0f12b28ed05b5b3a8"
+          }
+        },
+        {
+          "client_id": "962578571664-rsgaldlff3bftkau84eq6unkhvciq59u.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDwsIOteSjER3AvpIhImjLhsqZUGsEinX8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "962578571664-8olqh5lpagabuv0lq5s3dnhaatgemolr.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
