@@ -40,7 +40,6 @@ class SignInActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sign_in)
 
-
         // Let's configure the Google Sign in
 
         // Initialize Firebase Auth
@@ -53,7 +52,7 @@ class SignInActivity : AppCompatActivity() {
 
         val client = GoogleSignIn.getClient(this, gso)
         client.signOut()
-        btn_google_sign_in.setOnClickListener{
+        btn_google_sign_in.setOnClickListener {
             val signInIntent = client.signInIntent
             startActivityForResult(signInIntent, RC_GOOGLE_SIGN_IN)
         }
@@ -65,7 +64,7 @@ class SignInActivity : AppCompatActivity() {
         signInInputsArray = arrayOf(etSignInEmail, etSignInPassword)
         btnCreateAccount2.setOnClickListener {
             startActivity(Intent(this, CreateAccountActivity::class.java))
-            finish()
+            //finish()
         }
 
         btnSignIn.setOnClickListener {
@@ -81,17 +80,23 @@ class SignInActivity : AppCompatActivity() {
         super.onStart()
         // Check if user is signed in (non-null) and update UI accordingly.
         val currentUser = auth.currentUser
-        //updateUI(currentUser)
+        updateUI(currentUser)
     }
 
     private fun updateUI(user: FirebaseUser?) {
         //Let's navigate to our HomeActivity
-        if (user == null){
+        if (user == null) {
             Log.w(TAG, "User is null, not going through :c")
 
+        } else {
+            val intent = Intent(this, HomeActivity::class.java)
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+            startActivity(intent)
+            finish()
+
         }
-        startActivity(Intent(this, HomeActivity::class.java))
-        finish()
+
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -156,4 +161,3 @@ class SignInActivity : AppCompatActivity() {
         }
     }
 }
-
