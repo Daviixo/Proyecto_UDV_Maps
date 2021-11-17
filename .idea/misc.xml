@@ -5,9 +5,12 @@
       <map>
         <entry key="..\:/Users/David/AndroidStudioProjects/Proyecto_UDV_Maps/app/src/main/res/drawable/google_button.xml" value="0.19895833333333332" />
         <entry key="..\:/Users/David/AndroidStudioProjects/Proyecto_UDV_Maps/app/src/main/res/layout/activity_create_account.xml" value="0.5" />
-        <entry key="..\:/Users/David/AndroidStudioProjects/Proyecto_UDV_Maps/app/src/main/res/layout/activity_home.xml" value="0.25" />
-        <entry key="..\:/Users/David/AndroidStudioProjects/Proyecto_UDV_Maps/app/src/main/res/layout/activity_maps.xml" value="0.16145833333333334" />
+        <entry key="..\:/Users/David/AndroidStudioProjects/Proyecto_UDV_Maps/app/src/main/res/layout/activity_home.xml" value="0.5" />
+        <entry key="..\:/Users/David/AndroidStudioProjects/Proyecto_UDV_Maps/app/src/main/res/layout/activity_maps.xml" value="0.22" />
         <entry key="..\:/Users/David/AndroidStudioProjects/Proyecto_UDV_Maps/app/src/main/res/layout/activity_sign_in.xml" value="0.5" />
+        <entry key="..\:/Users/David/AndroidStudioProjects/Proyecto_UDV_Maps/app/src/main/res/layout/activity_splash.xml" value="0.175" />
+        <entry key="..\:/Users/David/AndroidStudioProjects/Proyecto_UDV_Maps/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.20677083333333332" />
+        <entry key="..\:/Users/David/AndroidStudioProjects/Proyecto_UDV_Maps/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.20677083333333332" />
       </map>
     </option>
   </component>

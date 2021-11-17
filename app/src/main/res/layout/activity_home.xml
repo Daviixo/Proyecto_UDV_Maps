@@ -48,26 +48,41 @@
 
             <!-- Let's set out round image -->
 
-            <androidx.cardview.widget.CardView
-                android:id="@+id/cv_profile_pic"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:layout_centerHorizontal="true"
-                android:layout_centerVertical="true"
-                android:layout_gravity="center"
-                app:cardCornerRadius="25dp">
 
-                <ImageView
-                    android:id="@+id/iv_profile_pic"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:scaleType="centerCrop"
-                    android:src="@drawable/z2_pp"
+            <RelativeLayout
+                android:id="@+id/imagePreview"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:padding="5dp">
 
-                    />
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cv_profile_pic"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:layout_gravity="center"
+                    app:cardCornerRadius="35dp">
 
-            </androidx.cardview.widget.CardView>
+                    <ImageView
+                        android:id="@+id/mImageView"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scaleType="centerCrop"
 
+                        />
+
+                </androidx.cardview.widget.CardView>
+
+            </RelativeLayout>
+
+            <ImageButton
+                android:id="@+id/btn_change_profile_pic"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center_horizontal"
+                android:background="@drawable/cam_icon" />
 
             <TextView
                 android:id="@+id/tv_username"

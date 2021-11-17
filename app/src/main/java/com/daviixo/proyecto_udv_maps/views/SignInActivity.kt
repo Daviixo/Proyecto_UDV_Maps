@@ -94,9 +94,7 @@ class SignInActivity : AppCompatActivity() {
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
             startActivity(intent)
             finish()
-
         }
-
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -137,6 +135,8 @@ class SignInActivity : AppCompatActivity() {
 
     private fun notEmpty(): Boolean = signInEmail.isNotEmpty() && signInPassword.isNotEmpty()
 
+    // Signing in with regular email
+
     private fun signInUser() {
         signInEmail = etSignInEmail.text.toString().trim()
         signInPassword = etSignInPassword.text.toString().trim()
@@ -146,10 +146,10 @@ class SignInActivity : AppCompatActivity() {
                 .addOnCompleteListener { signIn ->
                     if (signIn.isSuccessful) {
                         startActivity(Intent(this, HomeActivity::class.java))
-                        toast("signed in successfully")
+                        toast("Signed in successfully")
                         finish()
                     } else {
-                        toast("sign in failed")
+                        toast("Sign in failed")
                     }
                 }
         } else {

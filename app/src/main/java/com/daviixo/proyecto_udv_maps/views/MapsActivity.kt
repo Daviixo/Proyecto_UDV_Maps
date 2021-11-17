@@ -11,6 +11,9 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.daviixo.proyecto_udv_maps.R
 import com.daviixo.proyecto_udv_maps.utils.Extensions.toast
+import com.daviixo.proyecto_udv_maps.utils.SharedPrefManager
+import com.google.android.gms.location.FusedLocationProviderClient
+import com.google.android.gms.location.LocationServices
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
@@ -25,16 +28,20 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback,
     private lateinit var map: GoogleMap
 
     override fun onMapReady(googleMap: GoogleMap) {
+
         map = googleMap
         createMarker()
         enableMyLocation()
         map.setOnMyLocationButtonClickListener(this)
         map.setOnMyLocationClickListener(this)
+
     }
 
     private fun createMarker() {
-        val favoritePlace = LatLng(14.6205107, -90.5185649)
-        map.addMarker(MarkerOptions().position(favoritePlace).title("Welcome to my favorite place! ;)"))
+        val favoritePlace = LatLng(14.5992975, -90.5243853)
+        map.addMarker(
+            MarkerOptions().position(favoritePlace).title("Welcome to my favorite place! ;)")
+        )
         map.animateCamera(
             CameraUpdateFactory.newLatLngZoom(favoritePlace, 18f),
             4000,
@@ -47,12 +54,54 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback,
         setContentView(R.layout.activity_maps)
         createMapFragment()
 
+        // To get current location once app opens
+
+
         // Let's go back to our home page
 
-        btn_goto_home.setOnClickListener{
+        btn_goto_home.setOnClickListener {
             startActivity(Intent(this, HomeActivity::class.java))
             finish()
         }
+
+        btn_share.setOnClickListener {
+            shareLocation()
+        }
+
+        SharedPrefManager().remove(this, "Latitud")
+        SharedPrefManager().remove(this, "Longitud")
+
+    }
+
+    // Share button and stuff
+
+    fun shareLocation() {
+
+        val finalLatitude = SharedPrefManager().getStringVal(this@MapsActivity, "Latitud")
+        val finalLongitude = SharedPrefManager().getStringVal(this@MapsActivity, "Longitud")
+
+        if (finalLatitude!!.isNotEmpty() && finalLongitude!!.isNotEmpty()) {
+            val sendIntent: Intent = Intent().apply {
+
+
+                action = Intent.ACTION_SEND
+                putExtra(
+                    Intent.EXTRA_TEXT, "Hi there!\nI'd like to share my location with you:\n" +
+                            "https://www.google.es/maps?q=loc:${finalLatitude},${finalLongitude}\n\n" +
+                            "Don't have a good day... Have a GREAT DAY! "
+
+                )
+                type = "text/plain"
+
+            }
+
+            val shareIntent = Intent.createChooser(sendIntent, null)
+            startActivity(shareIntent)
+
+        } else {
+            toast("Your location is needed :3 Tap on the blue dot where you are!")
+        }
+
     }
 
     private fun createMapFragment() {
@@ -61,7 +110,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback,
         mapFragment.getMapAsync(this)
     }
 
-    // To get user's permission to check location stuff
+// To get user's permission to check location stuff
 
     private fun isPermissionsGranted() = ContextCompat.checkSelfPermission(
         this,
@@ -132,12 +181,16 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback,
     }
 
     override fun onMyLocationButtonClick(): Boolean {
-        Toast.makeText(this, "Boton pulsado", Toast.LENGTH_SHORT).show()
+        Toast.makeText(this, "Going to your location!", Toast.LENGTH_SHORT).show()
         return false
     }
 
     override fun onMyLocationClick(p0: Location) {
         Toast.makeText(this, "Estás en ${p0.latitude}, ${p0.longitude}", Toast.LENGTH_SHORT).show()
+
+        SharedPrefManager().setStringPrefVal(this, "Latitud", p0.latitude.toString())
+        SharedPrefManager().setStringPrefVal(this, "Longitud", p0.longitude.toString())
+
     }
 
 }
